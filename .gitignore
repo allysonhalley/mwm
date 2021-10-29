@@ -26,3 +26,6 @@
 #Server
 /server/node_modules/*
 /server/package-lock.json
+
+#root
+.DS_Store
