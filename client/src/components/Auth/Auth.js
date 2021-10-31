@@ -46,7 +46,7 @@ const SignUp = () => {
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push('/');
+      history.push('/index');
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +79,7 @@ const SignUp = () => {
             { isSignup ? 'Sign Up' : 'Sign In' }
           </Button>
           <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
+            clientId="642029041781-o75ru4dr3p9k04s1qjtsqp1s972spb3c.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                 Google Sign In
