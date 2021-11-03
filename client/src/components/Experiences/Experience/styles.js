@@ -15,7 +15,7 @@ export default makeStyles({
   },
   card: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     justifyContent: 'space-between',
     borderRadius: '15px',
     height: '100%',

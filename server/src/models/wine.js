@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const wineSchema = mongoose.Schema({
-    id: { type: String, required: true },
   name: { type: String, required:  true },
   winery: { type: String, required: true },
   color: { type: String, required: true },

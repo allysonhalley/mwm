@@ -4,10 +4,10 @@ import { getWines, getWine, createWine, updateWine, deleteWine } from '../contro
 
 const router = express.Router();
 
-router.get('/', getWines);
-router.Wine('/', createWine);
-router.get('/:id', getWine);
-router.patch('/:id', updateWine);
-router.delete('/:id', deleteWine);
+router.get('/wine', getWines);
+router.post('/wine', createWine);
+router.get('/wine/:id', getWine);
+router.patch('/wine/:id', updateWine);
+router.delete('/wine/:id', deleteWine);
 
 export default router;

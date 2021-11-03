@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import postRoutes from './routes/posts.js';
+import experienceRouter from './routes/experience.js';
 import userRouter from "./routes/user.js";
 import wineRouter from "./routes/wine.js";
 
@@ -15,7 +15,7 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
-app.use('/posts', postRoutes);
+app.use('/experience', experienceRouter);
 app.use("/user", userRouter);
 app.use("/wine", wineRouter);
 

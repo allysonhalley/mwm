@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import Wine from '../models/Wine.js';
+import Wine from '../models/wine.js';
 
 const router = express.Router();
 
