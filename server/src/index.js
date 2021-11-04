@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -7,15 +6,17 @@ import dotenv from 'dotenv';
 import experienceRouter from './routes/experience.js';
 import userRouter from "./routes/user.js";
 import wineRouter from "./routes/wine.js";
+import auth from './middleware/auth.js';
 
 const app = express();
 dotenv.config();
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.json());
 app.use(cors());
 
-app.use('/experience', experienceRouter);
+app.use(auth); 
+
+app.use("/experience", experienceRouter);
 app.use("/user", userRouter);
 app.use("/wine", wineRouter);
 

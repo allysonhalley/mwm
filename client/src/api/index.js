@@ -5,16 +5,15 @@ const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
-    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
   }
-
   return req;
 });
 
-export const fetchExperiences = () => API.get('/experiences');
-export const createExperience = (newExperience) => API.post('/experiences', newExperience);
-export const updateExperience = (id, updatedExperience) => API.patch(`/experiences/${id}`, updatedExperience);
-export const deleteExperience = (id) => API.delete(`/experiences/${id}`);
+export const fetchExperiences = () => API.get('/experience');
+export const createExperience = (newExperience) => API.post('/experience/add', newExperience);
+export const updateExperience = (id, updatedExperience) => API.patch(`/experience/${id}`, updatedExperience);
+export const deleteExperience = (id) => API.delete(`/experience/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);

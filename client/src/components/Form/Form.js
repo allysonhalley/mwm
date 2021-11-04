@@ -2,55 +2,69 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
+import { useHistory } from 'react-router-dom';
+// import ChipInput from 'material-ui-chip-input';
 
 import { createExperience, updateExperience } from '../../actions/experiences';
 import useStyles from './styles';
 
 const Form = ({ currentId, setCurrentId }) => {
-  // const [experienceData, setExperienceData] = useState({
-  //   name: '',
-  //   color: '',
-  //   sugar: '',
-  //   winery: '',
-  //   description: '',
-  //   tags: '',
-  //   selectedFile: '',
-  // });
-
-  const [experienceData, setExperienceData] = useState({ title: '', description: '', wine: '', tags: '', selectedFile: '' });
+  const [experienceData, setExperienceData] = useState({
+    name: '',
+    color: '',
+    sugar: '',
+    winery: '',
+    description: '',
+    tags: '',
+    selectedFile: '',
+  });
+  // const [experienceData, setExperienceData] = useState({ title: '', description: '', wine: '', tags: '', selectedFile: '' });
   const experience = useSelector((state) => (currentId ? state.experiences.find((description) => description._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
-
-  useEffect(() => {
-    if (experience) setExperienceData(experience);
-  }, [experience]);
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const history = useHistory();
 
   const clear = () => {
     setCurrentId(0);
-    setExperienceData({ title: '', description: '', wine: '', tags: '', selectedFile: '' });
-    // setExperienceData({
-    //   name: '',
-    //   color: '',
-    //   sugar: '',
-    //   winery: '',
-    //   description: '',
-    //   tags: '',
-    //   selectedFile: '',
-    // });
+    // setExperienceData({ title: '', description: '', wine: '', tags: '', selectedFile: '' });
+    setExperienceData({
+      name: '',
+      color: '',
+      sugar: '',
+      winery: '',
+      description: '',
+      tags: '',
+      selectedFile: '',
+    });
   };
+
+  useEffect(() => {
+    if (!experience?.title) clear();
+    if (experience) setExperienceData(experience);
+  }, [experience]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createExperience(...experienceData));
+      dispatch(createExperience({ ...experienceData, name: user?.result?.name }, history));
       clear();
     } else {
-      dispatch(updateExperience(currentId, ...experienceData));
+      dispatch(updateExperience(currentId, { ...experienceData, name: user?.result?.name }));
       clear();
     }
   };
+
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper} elevation={6}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like others memories.
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <Paper className={classes.paper}>

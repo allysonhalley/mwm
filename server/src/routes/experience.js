@@ -5,7 +5,8 @@ import { getExperiences, getExperience, createExperience, updateExperience, dele
 const router = express.Router();
 
 router.get('/', getExperiences);
-router.post('/', createExperience);
+// router.post('/', getMyExperiences);
+router.post('/add', createExperience);
 router.get('/:id', getExperience);
 router.patch('/:id', updateExperience);
 router.delete('/:id', deleteExperience);

@@ -4,7 +4,6 @@ import * as api from '../api/index.js';
 export const getExperiences = () => async (dispatch) => {
   try {
     const { data } = await api.fetchExperiences();
-
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error);
