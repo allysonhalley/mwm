@@ -50,13 +50,13 @@ export const createExperience = async (req, res) => {
     try {
         const newWine = await Wine.create({ ...wine, user: req.userId })
         const newExperience = await Experience.create({
-            title: `${wine.name} ${wine.color} ${wine.sugar}`,
-            bottle: `${wine.winery} ${wine.graps}`,
+            title: `${newWine.name} ${newWine.color} ${newWine.sugar}`,
+            bottle: `${newWine.winery} ${newWine.graps}`,
             description: description,
-            wine: newWine.id,
-            user: wine.user,
+            wine: newWine,
+            user: req.userId,
             tags: tags,
-            selectedFile: selectedFile
+            selectedFile: selectedFile,
         });
 
         res.status(201).json(newExperience );
@@ -74,7 +74,7 @@ export const updateExperience = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No Experience with id: ${id}`);
 
     const newExperience = new Experience({
-        title: `${name} ${color} ${sugar}`,
+        title: `${name}  ${color} ${sugar}`,
         botle: `${winery} ${graps}`,
         description: description,
         wine: req.wineId,
