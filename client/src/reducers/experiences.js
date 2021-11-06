@@ -1,16 +1,20 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, START_LOADING, END_LOADING, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 
-export default (experiences = [], action) => {
+export default (state = { isLoading: true, experiences: [] }, action) => {
   switch (action.type) {
+    case START_LOADING:
+      return { ...state, isLoading: true };
+    case END_LOADING:
+      return { ...state, isLoading: false };
     case FETCH_ALL:
-      return action.payload;
+      return { ...state, experiences: action.payload.data };
     case CREATE:
-      return [...experiences, action.payload];
+      return { ...state, experiences: [...state.experiences, action.payload] };
     case UPDATE:
-      return experiences.map((experience) => (experience._id === action.payload._id ? action.payload : experience));
+      return { ...state, experiences: state.experiences.map((experience) => (experience._id === action.payload._id ? action.payload : experience)) };
     case DELETE:
-      return experiences.filter((experience) => experience._id !== action.payload);
+      return { ...state, experiences: state.experiences.filter((experience) => experience._id !== action.payload) };
     default:
-      return experiences;
+      return state;
   }
 };

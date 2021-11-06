@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, START_LOADING, END_LOADING, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getExperiences = () => async (dispatch) => {
@@ -12,8 +12,12 @@ export const getExperiences = () => async (dispatch) => {
 
 export const getMyExperiences = () => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await api.fetchExperiences();
-    dispatch({ type: FETCH_ALL, payload: data });
+
+    dispatch({ type: FETCH_ALL, payload: { data } });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
   }
@@ -21,6 +25,8 @@ export const getMyExperiences = () => async (dispatch) => {
 
 export const createExperience = (experience) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await api.createExperience(experience);
 
     dispatch({ type: CREATE, payload: data });
@@ -31,6 +37,8 @@ export const createExperience = (experience) => async (dispatch) => {
 
 export const updateExperience = (id, experience) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await api.updateExperience(id, experience);
 
     dispatch({ type: UPDATE, payload: data });

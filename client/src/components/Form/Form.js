@@ -88,7 +88,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField name="sugar" variant="outlined" label="Sugar" fullWidth value={experienceData.sugar} onChange={(e) => setExperienceData({ ...experienceData, sugar: e.target.value })} />
         <TextField name="graps" variant="outlined" label="Graps" fullWidth value={experienceData.graps} onChange={(e) => setExperienceData({ ...experienceData, graps: e.target.value })} />
 
-        <TextField name="description" variant="outlined" label="Description" fullWidth value={experienceData.description} onChange={(e) => setExperienceData({ ...experienceData, description: e.target.value })} />
+        <TextField name="description" variant="outlined" label="Description" fullWidth multiline row={4} value={experienceData.description} onChange={(e) => setExperienceData({ ...experienceData, description: e.target.value })} />
 
         <TextField name="tags" variant="outlined" label="Tags (coma separated)" fullWidth value={experienceData.tags} onChange={(e) => setExperienceData({ ...experienceData, tags: e.target.value.split(',') })} />
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setExperienceData({ ...experienceData, selectedFile: base64 })} /></div>
