@@ -7,9 +7,9 @@ import auth from "../middleware/auth.js";
 
 router.get('/', auth, getMyExperiences);
 router.get('/all', getExperiences);
-router.post('/add', createExperience);
-router.get('/:id', getExperience);
-router.patch('/:id', updateExperience);
-router.delete('/:id', deleteExperience);
+router.post('/add', auth, createExperience);
+router.get('/:id', auth, getExperience);
+router.patch('/:id', auth, updateExperience);
+router.delete('/:id', auth, deleteExperience);
 
 export default router;
