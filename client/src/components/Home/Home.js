@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
-import { getExperiences } from '../../actions/experiences';
+import { getMyExperiences } from '../../actions/experiences';
 import Experiences from '../Experiences/Experiences';
 import Form from '../Form/Form';
 
@@ -11,7 +11,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getExperiences());
+    dispatch(getMyExperiences());
   }, [currentId, dispatch]);
 
   return (

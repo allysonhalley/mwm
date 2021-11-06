@@ -10,6 +10,15 @@ export const getExperiences = () => async (dispatch) => {
   }
 };
 
+export const getMyExperiences = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchExperiences();
+    dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const createExperience = (experience) => async (dispatch) => {
   try {
     const { data } = await api.createExperience(experience);

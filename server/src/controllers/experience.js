@@ -6,28 +6,24 @@ import Wine from '../models/wine.js';
 
 const router = express.Router();
 
-export const getExperiences = async (req, res) => { 
-    
+export const getExperiences = async (req, res) => {         
     try {
-        const experiences = await Experience.find({ user: req.userId });
-        
+        const experiences = await Experience.find();
         res.status(200).json(experiences);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
-// export const getMyExperiences = async (req, res) => {
-    // const { id }= req.params;    
-    // // const id = "617dc77d42ef2a58984eaba1";
-    // try {
-    //     const experiences = await Experience.find({ user: id });
-    //     console.log(experiences);
-    //     res.status(200).json(experiences);
-    // } catch (error) {
-    //     res.status(404).json({ message: error.message });
-    // }
-// }
+export const getMyExperiences = async (req, res) => {
+    try {
+        const experiences = await Experience.find({ user: req.userId });
+        console.log(experiences);
+        res.status(200).json(experiences);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
 
 export const getExperience = async (req, res) => { 
     const { id } = req.params;

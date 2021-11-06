@@ -6,7 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import Icon from './icon';
-import { signIn, signUp } from '../../actions/auth';
+import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
@@ -33,9 +33,9 @@ const SignUp = () => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signUp(form, history));
+      dispatch(signup(form, history));
     } else {
-      dispatch(signIn(form, history));
+      dispatch(signin(form, history));
     }
   };
 
