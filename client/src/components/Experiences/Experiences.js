@@ -15,7 +15,7 @@ const Experiences = ({ setCurrentId }) => {
     isLoading ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {experiences?.map((experience) => (
-          <Grid key={experience._id} item xs={12} sm={12} md={6} lg={3}>
+          <Grid key={experience._id} item xs={12} sm={12} md={6} lg={6}>
             <Experience experience={experience} setCurrentId={setCurrentId} />
           </Grid>
         ))}
