@@ -40,8 +40,8 @@ const Navbar = () => {
       <div className={classes.brandContainer}>
         <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
           Wine Memories
+          <img className={classes.image} src={winememories} align="center" alt="icon" height="60" />
         </Typography>
-        <img className={classes.image} src={winememories} align="center" alt="icon" height="60" />
       </div>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
