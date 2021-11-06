@@ -7,9 +7,10 @@ const secret = 'test';
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
-
+  console.log('user-control-signin');
   try {
     const oldUser = await UserModal.findOne({ email });
+    console.log(oldUser);
 
     if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
 
@@ -27,7 +28,7 @@ export const signin = async (req, res) => {
 
 export const signup = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
-
+  console.log('user-contoller-signup');
   try {
     const oldUser = await UserModal.findOne({ email });
 

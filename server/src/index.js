@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import experienceRouter from './routes/experience.js';
 import userRouter from "./routes/user.js";
 import wineRouter from "./routes/wine.js";
-import auth from './middleware/auth.js';
+// import auth from './middleware/auth.js';
 
 const app = express();
 dotenv.config();
@@ -14,11 +14,11 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-app.use(auth); 
-
 app.use("/experience", experienceRouter);
 app.use("/user", userRouter);
 app.use("/wine", wineRouter);
+
+// app.use(auth); 
 
 app.use('/', (req, res) => {
   res.send('Welcome Enophile to MWM!');

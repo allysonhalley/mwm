@@ -18,8 +18,6 @@ export const getExperiences = async (req, res) => {
 export const getMyExperiences = async (req, res) => {
     try {
         const experiences = await Experience.find({ user: req.userId });
-        console.log(experiences);
-        res.status(200).json(experiences);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
