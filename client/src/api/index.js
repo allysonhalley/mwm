@@ -11,6 +11,7 @@ API.interceptors.request.use((req) => {
 });
 
 export const fetchExperiences = () => API.get('/experience');
+export const fetchExperience = (id) => API.get(`/experience/${id}`);
 export const createExperience = (newExperience) => API.post('/experience/add', newExperience);
 export const updateExperience = (id, updatedExperience) => API.patch(`/experience/${id}`, updatedExperience);
 export const deleteExperience = (id) => API.delete(`/experience/${id}`);

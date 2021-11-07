@@ -23,7 +23,7 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: '',
     selectedFile: '',
   });
-  // const [experienceData, setExperienceData] = useState({ title: '', description: '', wine: '', tags: '', selectedFile: '' });
+
   const experience = useSelector((state) => (currentId ? state.experiences.find((id) => id._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();

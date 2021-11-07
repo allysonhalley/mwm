@@ -11,8 +11,8 @@ const App = () => (
     <Container maxWidth="lg">
       <Navbar />
       <Switch>
-        <Route path="/index" exact component={Home} />
         <Route path="/" exact component={Auth} />
+        <Route path="/index" exact component={Home} />
       </Switch>
     </Container>
   </BrowserRouter>
